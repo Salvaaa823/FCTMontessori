@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Configuración</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0; /* Añadido para eliminar el margen por defecto */
+    }
+
+    .form-container {
+      width: 100%; /* Modificado para ocupar todo el ancho de la pantalla */
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .tabs {
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ccc;
+      color: #fff;
+      border-radius: 5px 5px 0 0;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background-color: #4CAF50;
+    }
+
+    .section-container {
+      display: none;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-radius: 0 5px 5px 5px;
+    }
+
+    .section-container.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    function validarFormulario() {
+      // Lógica de validación y envío del formulario
+      alert('Formulario validado y enviado correctamente.');
+    }
+
+    function cambiarPestana(event, pestanaId) {
+      var i, tabContent, tabLinks;
+      tabContent = document.getElementsByClassName("section-container");
+      for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+      }
+      tabLinks = document.getElementsByClassName("tab");
+      for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+      }
+      document.getElementById(pestanaId).style.display = "block";
+      event.currentTarget.className += " active";
+    }
+  </script>
+</head>
+<body>
+  <div id="introduction" class="section-container">
+    <h3>Introducción de Datos del Alumno</h3>
+    <label for="student_name">Nombre del alumno:</label>
+    <input type="text" id="student_name" name="student_name">
+
+    <!-- Agrega los campos adicionales para recopilar los datos del alumno -->
+
+    <button onclick="showAccessibilityForm()">Continuar</button>
+  </div>
+  <div class="form-container">
+    <h2>Configuración de Accesibilidad</h2>
+    <div class="tabs">
+      <div class="tab active" onclick="cambiarPestana(event, 'visual')">Accesibilidad Visual</div>
+      <div class="tab" onclick="cambiarPestana(event, 'auditiva')">Accesibilidad Auditiva</div>
+      <div class="tab" onclick="cambiarPestana(event, 'cognitiva')">Accesibilidad Cognitiva</div>
+      <div class="tab" onclick="cambiarPestana(event, 'fisica')">Accesibilidad Física</div>
+      <div class="tab" onclick="cambiarPestana(event, 'adicional')">Información Adicional</div>
+    </div>
+
+    <div id="visual" class="section-container active">
+      <h3>Accesibilidad Visual</h3>
+      <label>El alumno/a presenta discapacidad visual?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a presenta discapacidad visual?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a mira a la pantalla?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a focaliza la atención en la pantalla?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a hace barrido visual?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a es capaz de mirar teclado/ratón y pantalla? (atención compartida)</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a presenta buena coordinación óculo-manual?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a necesita adaptación de tamaño de la letra y/o imagen?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a necesita contrastes de colores? (se usa el fondo negro para dificultades visuales)</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿Adaptación del cursor: tamaño, color y velocidad?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a precisa de ratón ocular?</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a reacciona al feed-back visual a modo de recompensa en una actividad? (sonido de aplausos)</label>
+      <select name="visual_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <!-- Agrega los demás campos para accesibilidad visual -->
+
+    </div>
+
+    <div id="auditiva" class="section-container">
+      <h3>Accesibilidad Auditiva</h3>
+      <label>¿El alumno/a presenta discapacidad auditiva?</label>
+      <select name="auditory_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Adaptación del volumen y la velocidad</label>
+        <input type="number" name="volume_speed" min="0" max="100">
+
+      <label>¿El alumno/a reacciona al feed-back auditivo a modo de recompensa en una actividad? (No subir nada en caso de no necesitar)</label>
+      <input type="file" id="music_file" name="music_file">
+      
+      <!-- Agrega los demás campos para accesibilidad auditiva -->
+
+    </div>
+
+    <div id="cognitiva" class="section-container">
+      <h3>Accesibilidad Cognitiva</h3>
+      <label>¿El alumno/a presenta discapacidad cognitiva?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere de adaptación en el enunciado para aumentar la comprensión de mensajes orales?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere un encuadre del texto mientras aparece la consigna?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se adapte la velocidad en la que se le presenta el mensaje?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere adaptación del tiempo de respuesta?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se incluya la posibilidad de presentar un temporizador visual?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se establezca control por parte del docente?</label>
+      <select name="cognitive_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <!-- Agrega los demás campos para accesibilidad cognitiva -->
+
+    </div>
+
+    <div id="fisica" class="section-container">
+      <h3>Accesibilidad Física</h3>
+      <label>¿El alumno/a presenta discapacidad física?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere de pulsador?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a usa ratón?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a usa teclado?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se modifique la intensidad al hacer clic en la pantalla?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se modifique el área, al hacer clic en la pantalla?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se modifique la fuerza al hacer clic en la pantalla?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se modifique el tiempo que tarda en hacer clic en la pantalla?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <label>¿El alumno/a requiere que se tengan en cuenta los movimientos repetitivos a la hora de hacer clic sobre la pantalla?</label>
+      <select name="physical_disability">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+
+      <!-- Agrega los demás campos para accesibilidad física -->
+
+    </div>
+
+    <div id="adicional" class="section-container">
+      <h3>Información Adicional</h3>
+      <label>Gustos e intereses del alumno/a</label>
+      <textarea name="interests"></textarea>
+
+      <!-- Agrega los demás campos adicionales -->
+
+    </div>
+
+    <button type="submit" onclick="validarFormulario()">Guardar</button>
+  </div>
+</body>
+</html>
